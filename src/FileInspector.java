@@ -1,22 +1,18 @@
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+
 import static java.lang.System.out;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import static java.nio.file.StandardOpenOption.CREATE;
 import javax.swing.JFileChooser;
-public class Main {
+public class FileInspector {
     public static void main(String[] args) {
         JFileChooser chooser = new JFileChooser();
         File selectedFile;
@@ -39,7 +35,7 @@ public class Main {
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {   //what exactly is going on in the if condition above?
                 //I know what it means, but not how those pieces create that condition.
 
-                //the next 8 lines call what we need to read the file.
+                //the next 4 lines call what we need to read the file.
                 selectedFile = chooser.getSelectedFile();
                 //perfectly descriptive command - the chooser gets the selected file.
                 Path file = selectedFile.toPath();
@@ -69,7 +65,8 @@ public class Main {
                     words = l.split(" ");
                     wordCount = wordCount + words.length;
                 }
-                    out.println("\nSpeedRead complete." +
+                    out.println("\nFile Inspector complete." +
+                            "\nThat was quite the speed read." +
                             "\n\nFile name: " + selectedFile +
                             "\nNumber of lines: " + lineCount +
                             "\nNumber of words: " + wordCount +
